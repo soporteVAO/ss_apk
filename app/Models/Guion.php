@@ -10,6 +10,7 @@ class Guion extends Model
     use HasFactory;
     protected $table = 'guiones';
     protected $fillable = ['nombre','empresa_id'];
+    protected $keyType = 'integer';
 
     public function fields(){
         return $this->belongsToMany('App\Models\Field','guiones_fields')->withPivot('order');

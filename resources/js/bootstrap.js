@@ -4,7 +4,6 @@ try {
     require('bootstrap');
 } catch (e) {}
 
-
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the
@@ -20,10 +19,6 @@ window.jQuery = require('jquery');
 window.Swal = require('sweetalert2');
 
 window.fancyTable = require('jquery.fancytable');
-
-// window.sortable = require('sortablejs');
-
-// window.MicroModal = require('micromodal');
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

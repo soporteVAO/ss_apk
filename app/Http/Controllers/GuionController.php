@@ -32,22 +32,29 @@ class GuionController extends Controller
     }
 
     public function store(Request $request){
-        // dd($request->except(['_token']));
+        try{
+             // dd($request->except(['_token']));
         $request->validate([
-            'nombre'=>'required'
+            'nombre'=>'required|unique:guiones'
         ]);
         $cuestionario = Guion::create([
             'nombre' => $request->nombre,
             'empresa_id' => Auth::user()->empresa->id
         ]);
         // dd($cuestionario);
-        $cuestionario->fields()->syncWithPivotValues($request->fields,['order'=>0]);
+        //$cuestionario->fields()->syncWithPivotValues($request->fields,['order'=>0]);
+        $cuestionario->fields()->attach($request->fields,['order'=>0]);
         if ($cuestionario){
             $msg = "Guion creado satisfactoriamente";
             return redirect()->back()->with('success', $msg);
         }
         $msg = "Ocurrio un error creando el guión";
         return redirect()->back()->with('danger', $msg);
+        }catch(Exception $e){
+                    return redirect()->back()->with('danger', $e->getMessage());
+
+        }
+       
     }
 
     public function show(Guion $guion){

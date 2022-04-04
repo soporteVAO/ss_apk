@@ -13,7 +13,8 @@ class Field extends Model
                             'dataType','isRequired','isAvailableInContactManager',
                              'empresa_id','categoria_id'];
     public $incrementing = false;
-    
+    protected $keyType = 'integer';
+
     public function guiones(){
         return $this->belongsToMany('App\Models\Guion','guiones_fields')->withPivot('order');
     }
@@ -23,18 +24,5 @@ class Field extends Model
 
     public function category(){
         return $this->belongsTo('App\Models\FieldsCategory','categoria_id','id');
-    }
-
-    // /**
-    //  * The "booted" method of the model
-    //  * 
-    //  * @return void
-    //  */
-    // protected static function booted(){
-    //     static::deleting(function(Field $field){
-    //         $field->options()->delete();
-    //     });
-    // }
-    
-    
+    }    
 }

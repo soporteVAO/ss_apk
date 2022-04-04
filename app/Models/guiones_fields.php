@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class guiones_fields extends Model
 {
     use HasFactory;
+
+    protected $table = 'guiones_fields';
+
 }

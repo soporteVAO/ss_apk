@@ -95,7 +95,8 @@
 @endsection
 
 @push('js')
-    <script>
+<script>
+    jQuery(function($){
         $(document).ready(function() {
             demo.checkFullPageBackgroundImage();
 
@@ -104,5 +105,7 @@
                 $('.card').removeClass('card-hidden');
             }, 700)
         });
+    })
+        
     </script>
 @endpush
